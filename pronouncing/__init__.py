@@ -251,8 +251,8 @@ def rhymes(word1, word2):
     phones1 = phones_for_word(word1)[0]
     phones2 = phones_for_word(word2)[0]
     
-    rhyme1 = rhyming_part1(phones1)
-    rhyme2 = rhyming_part2(phones2)
+    rhyme1 = rhyming_part(phones1)
+    rhyme2 = rhyming_part(phones2)
     
     if rhyme1 == rhyme2:
         return True
