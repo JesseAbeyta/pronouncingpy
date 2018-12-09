@@ -2,7 +2,7 @@
 """
 Created on Sat Dec  8 19:58:33 2018
 
-@author: Jesse
+@author: Warlock
 """
 
 from __future__ import print_function
@@ -11,6 +11,8 @@ import re
 from pkg_resources import resource_stream
 import collections
 import cmudict
+
+# For whatever isn't in the CMU dict
 from g2p_en import g2p
 
 
@@ -22,6 +24,8 @@ pronunciations = None
 lookup = None
 rhyme_lookup = None
 
+# make a global session of tf to try and use resources better
+g2p.make_sess()
 
 def parse_cmu(cmufh):
     """Parses an incoming file handle as a CMU pronouncing dictionary file.
@@ -259,4 +263,6 @@ def rhymes(word1, word2):
     else:
         return False
     
-    
+# Close the current tf session
+def close_sess():
+    g2p.close_sess()
