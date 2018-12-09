@@ -13,7 +13,7 @@ import collections
 import cmudict
 
 # For whatever isn't in the CMU dict
-from g2p_en import g2p
+import g2p_en
 
 
 __author__ = 'Allison Parrish'
@@ -25,7 +25,7 @@ lookup = None
 rhyme_lookup = None
 
 # make a global session of tf to try and use resources better
-g2p.make_sess()
+g2p_en.make_sess()
 
 def parse_cmu(cmufh):
     """Parses an incoming file handle as a CMU pronouncing dictionary file.
@@ -115,7 +115,7 @@ def phones_for_word(find):
     # If the requested word isn't in the CMU dictionary, fallback on g2p_en
     # ML to attempt to determine prononuciation
     if len(found) == 0:
-        found = [" ".join(g2p(find))]
+        found = [" ".join(g2p_en.g2p(find))]
         
     return found
 
@@ -265,4 +265,4 @@ def rhymes(word1, word2):
     
 # Close the current tf session
 def close_sess():
-    g2p.close_sess()
+    g2p_en.close_sess()
