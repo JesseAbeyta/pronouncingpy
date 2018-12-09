@@ -218,7 +218,7 @@ def search_stresses(pattern):
             if regexp.search(stresses(phones))]
 
 
-def rhymes(word):
+def rhyme_list(word):
     """Get words rhyming with a given word.
 
     This function may return an empty list if no rhyming words are found in
@@ -245,3 +245,18 @@ def rhymes(word):
         return unique_combined_rhymes
     else:
         return []
+
+# Given two words, returns true if their primary pronounciation's ryhme
+def rhymes(word1, word2):
+    phones1 = phones_for_word(word1)[0]
+    phones2 = phones_for_word(word2)[0]
+    
+    rhyme1 = rhyming_part1(phones1)
+    rhyme2 = rhyming_part2(phones2)
+    
+    if rhyme1 == rhyme2:
+        return True
+    else:
+        return False
+    
+    
