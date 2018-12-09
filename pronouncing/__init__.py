@@ -1,9 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Dec  8 19:58:33 2018
+
+@author: Jesse
+"""
+
 from __future__ import print_function
 from itertools import chain
 import re
 from pkg_resources import resource_stream
 import collections
 import cmudict
+from g2p_en import g2p
+
 
 __author__ = 'Allison Parrish'
 __email__ = 'allison@decontextualize.com'
@@ -96,7 +105,15 @@ def phones_for_word(find):
     :returns: a list of phone strings that correspond to that word.
     """
     init_cmu()
-    return lookup.get(find.lower(), [])
+    
+    found = lookup.get(find.lower(), [])
+    
+    # If the requested word isn't in the CMU dictionary, fallback on g2p_en
+    # ML to attempt to determine prononuciation
+    if len(found) == 0:
+        found = [" ".join(g2p(find))]
+        
+    return found
 
 
 def stresses(s):
