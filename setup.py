@@ -24,12 +24,12 @@ test_requirements = [
 
 setup(
     name='pronouncing',
-    version='0.2.0',
+    version='0.2.1',
     description="A simple interface for the CMU pronouncing dictionary",
     long_description=readme + '\n\n' + history,
     author="Allison Parrish",
     author_email='allison@decontextualize.com',
-    url='https://github.com/aparrish/pronouncingpy',
+    url='https://github.com/JesseAbeyta/pronouncingpy',
     packages=[
         'pronouncing',
     ],
